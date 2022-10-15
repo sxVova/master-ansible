@@ -15,6 +15,11 @@
     name:    docker
     enabled: yes
 
+- name: Install the latest version of Pip
+  yum:
+    name:  python-pip
+    state: latest
+
 - name: Install docker python package
   ansible.builtin.pip:
     name: docker
