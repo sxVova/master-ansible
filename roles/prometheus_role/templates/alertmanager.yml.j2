@@ -11,7 +11,7 @@ route:
 receivers:
 - name: SRE
   pagerduty_configs:
-  - service_key: ''
+  - service_key: '{{ pagerduty_service_key }}'
 
 inhibit_rules:
   - source_match:

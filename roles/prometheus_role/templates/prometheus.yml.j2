@@ -9,21 +9,21 @@ global:
   evaluation_interval: 10s
 
 rule_files:
-  # - "first.rules"
-  # - "second.rules"
+   - "container.rules"
+   - "host.rules"
 
 scrape_configs:
   - job_name: cadvisor
     metrics_path: /metrics
     static_configs:
       - targets:
-         - '10.140.26.80:8080' # prom
-         - '10.140.26.70:8080' # web
-         - '10.140.26.10:8080' # db
+         - '{{ prom_private_ip }}:8080' # prom
+         - '{{ web_private_ip }}:8080' # web
+         - '{{ db_private_ip }}:8080' # db
   - job_name: node_exporter
     metrics_path: /metrics
     static_configs:
       - targets:
-         - '10.140.26.80:9100' # prom
-         - '10.140.26.70:9100' # web
-         - '10.140.26.10:9100' # db
+         - '{{ prom_private_ip }}:9100' # prom
+         - '{{ web_private_ip }}:9100' # web
+         - '{{ db_private_ip }}' # db
