@@ -1,12 +1,12 @@
 ---
 
-- hosts: postgres #all
+- hosts: all
   become: true
   gather_facts: no
   roles:
    - { role: docker_role }
-#   - { role: node_exporter_role }
-#   - { role: cadvisor_role }
+   - { role: node_exporter_role }
+   - { role: cadvisor_role }
 
 #- hosts: prometheus
 #  become: true
@@ -14,16 +14,16 @@
 #  roles:
 #    - { role: prometheus_role }
 
-#- hosts: pgadmin
-#  become: true
-#  gather_facts: no
-#  roles:
-#    - { role: web_role }
+- hosts: pgadmin
+  become: true
+  gather_facts: no
+  roles:
+    - { role: web_role }
 
-#- hosts: postgres
-#  become: true
-#  gather_facts: no
-#  roles:
-#    - { role: db_role }
+- hosts: postgres
+  become: true
+  gather_facts: no
+  roles:
+    - { role: db_role }
 
 ...

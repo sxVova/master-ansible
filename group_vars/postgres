@@ -1,3 +1,4 @@
 ---
-postgres_admin_password      : temp@domain.com
+ansible_user            : ec2-user
+postgres_admin_password : temp@domain.com
 ...

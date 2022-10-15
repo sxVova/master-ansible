@@ -1,4 +1,5 @@
 ---
-pgAdmin_admin_email          : temp@domain.com
-pgAdmin_admin_password       : temp@domain.com
+ansible_user           : ec2-user
+pgAdmin_admin_email    : temp@domain.com
+pgAdmin_admin_password : temp@domain.com
 ...

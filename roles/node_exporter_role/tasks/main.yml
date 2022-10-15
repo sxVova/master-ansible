@@ -1,6 +1,6 @@
 ---
 - name: Install the latest version of node_exporter
-  ansible.builtin.yum:
+  yum:
     name: node_exporter
     state: latest
 
