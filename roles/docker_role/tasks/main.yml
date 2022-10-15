@@ -1,6 +1,6 @@
 ---
 - name: Install the latest version of Docker
-  ansible.builtin.yum:
+  yum:
     name: docker
     state: latest
 
