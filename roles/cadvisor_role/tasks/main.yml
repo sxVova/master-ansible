@@ -1,0 +1,7 @@
+---
+- name: Run a cadvisor container
+  docker_container:
+    name: cadvisor
+    image: gcr.io/cadvisor/cadvisor
+    ports:
+     - "8080:8080"

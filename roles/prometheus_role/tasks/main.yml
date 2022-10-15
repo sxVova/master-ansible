@@ -1,0 +1,49 @@
+---
+- name: Add prometheus package
+  ansible.builtin.shell:  |
+  tee /etc/yum.repos.d/prometheus.repo <<EOF
+  [prometheus]
+  name=prometheus
+  baseurl=https://packagecloud.io/prometheus-rpm/release/el/7/x86_64
+  repo_gpgcheck=1
+  enabled=1
+  gpgkey=https://packagecloud.io/prometheus-rpm/release/gpgkey
+         https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm
+  gpgcheck=1
+  metadata_expire=300
+  EOF
+
+- name: Install the latest version of prometheus
+  ansible.builtin.yum:
+    name: prometheus2
+    state: latest
+
+- name: Enable prometheus
+  systemd:
+    name:    prometheus2
+    enabled: yes
+
+- name: Copy prometheus config file
+  template:
+     src: prometheus.yml.j2
+     dest: prometheus.yml
+
+- name: Restart prometheus
+  systemd:
+    name:    prometheus2
+    restarted: yes
+
+- name: Copy alertmanager config file
+  template:
+     src: alertmanager.yml.j2
+     dest: alertmanager.yml
+
+- name: Run an alertmanager container
+  docker_container:
+    name: alertmanager
+    image: prom/alertmanager
+    command: --config.file=/config/alertmanager.yml --log.level=debug
+    ports:
+     - "9093:9093"
+    volumes:
+     - "./alertmanager:/config"

@@ -1,0 +1,18 @@
+---
+- name: Install the latest version of Docker
+  ansible.builtin.yum:
+    name: docker
+    state: latest
+
+- name: Start docker
+  systemd:
+    state:   started
+    name:    docker
+    enabled: yes
+
+- name: Enable docker
+  systemd:
+    name:    docker
+    enabled: yes
+
+

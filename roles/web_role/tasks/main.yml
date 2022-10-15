@@ -1,0 +1,10 @@
+---
+- name: Run a pgAdmin container
+  docker_container:
+    name: pgAdmin
+    image: dpage/pgadmin4
+    ports:
+     - "80:80"
+    env:
+      PGADMIN_DEFAULT_EMAIL: "{{ pgAdmin_admin_email }}"
+      PGADMIN_DEFAULT_PASSWORD: "{{ pgAdmin_admin_password }}"

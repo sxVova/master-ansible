@@ -1,0 +1,6 @@
+[prometheus]
+${prom_ip}
+[pgadmin]
+${web_ip}
+[postgres]
+${db_ip}

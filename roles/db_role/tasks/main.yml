@@ -1,0 +1,9 @@
+---
+- name: Run a postgres container
+  docker_container:
+    name: postgres
+    image: postgres
+    ports:
+         - "5432:5432"
+    env:
+       POSTGRES_PASSWORD: "{{ postgres_admin_password }}"
