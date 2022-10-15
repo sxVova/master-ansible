@@ -22,8 +22,8 @@
   docker_container:
     name: alertmanager
     image: prom/alertmanager
-    command: --config.file=/config/alertmanager.yml --log.level=debug
+    command: --config.file=./alertmanager.yml --log.level=debug
     ports:
      - "9093:9093"
     volumes:
-     - "./alertmanager:/config"
+     - "./alertmanager.yml:/config/alertmanager.yml"

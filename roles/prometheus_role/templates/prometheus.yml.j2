@@ -17,13 +17,13 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-         - 'localhost:8080'
+         - '10.140.26.80:8080' #prom
          - '10.140.26.70:8080' # web
          - '10.140.26.10:8080' # db
   - job_name: node_exporter
     metrics_path: /metrics
     static_configs:
       - targets:
-         - 'localhost:9100'
+         - '10.140.26.80:9100' #prom
          - '10.140.26.70:9100' # web
          - '10.140.26.10:9100' # db
