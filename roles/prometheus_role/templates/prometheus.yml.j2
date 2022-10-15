@@ -26,4 +26,4 @@ scrape_configs:
       - targets:
          - '{{ prom_private_ip }}:9100' # prom
          - '{{ web_private_ip }}:9100' # web
-         - '{{ db_private_ip }}' # db
+         - '{{ db_private_ip }}:9100' # db
