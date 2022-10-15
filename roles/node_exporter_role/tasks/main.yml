@@ -1,10 +1,11 @@
 ---
-- name: Install the latest version of node_exporter
-  yum:
-    name: node_exporter
-    state: latest
-
-- name: Enable node_exporter
-  systemd:
-    name:    node_exporter
-    enabled: yes
+- name: Run a node exporter container
+  docker_container:
+    name: node-exporter
+    image: quay.io/prometheus/node-exporter
+    network_mode: host
+    pid_mode: host
+    command:
+      - '--path.rootfs=/host'
+    ports:
+      - "9100:9100"
