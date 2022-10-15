@@ -22,8 +22,7 @@
   docker_container:
     name: alertmanager
     image: prom/alertmanager
-    command: --config.file=./alertmanager.yml --log.level=debug
+    restart: unless-stopped
+    command: --config.file=/home/{{ ansible_user }}/alertmanager.yml --log.level=debug
     ports:
      - "9093:9093"
-    volumes:
-     - "./alertmanager.yml:/config/alertmanager.yml"
