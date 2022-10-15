@@ -16,7 +16,7 @@
 - name: Copy alertmanager config file
   template:
      src: alertmanager.yml.j2
-     dest: alertmanager.yml
+     dest: config/alertmanager.yml
 
 - name: Run an alertmanager container
   docker_container:
@@ -24,6 +24,9 @@
     image: prom/alertmanager
     restart_policy: unless-stopped
     restart: yes
-    command: --config.file=/home/{{ ansible_user }}/alertmanager.yml --log.level=debug
+    command: --config.file=/config/alertmanager.yml --log.level=debug
     ports:
      - "9093:9093"
+    volumes:
+      - "./alertmanager:/config"
+      - alertmanager-data:/data
