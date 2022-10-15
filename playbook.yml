@@ -8,11 +8,11 @@
    - { role: node_exporter_role }
    - { role: cadvisor_role }
 
-#- hosts: prometheus
-#  become: true
-#  gather_facts: no
-#  roles:
-#    - { role: prometheus_role }
+- hosts: prometheus
+  become: true
+  gather_facts: no
+  roles:
+    - { role: prometheus_role }
 
 - hosts: pgadmin
   become: true
