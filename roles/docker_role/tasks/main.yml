@@ -15,4 +15,8 @@
     name:    docker
     enabled: yes
 
+- name: Install docker python package
+  ansible.builtin.pip:
+    name: docker
+
 
