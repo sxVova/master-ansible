@@ -24,7 +24,6 @@
     image: prom/alertmanager
     restart_policy: unless-stopped
     restart: yes
-    restart_retries: 5
     command: --config.file=/home/{{ ansible_user }}/alertmanager.yml --log.level=debug
     ports:
      - "9093:9093"
