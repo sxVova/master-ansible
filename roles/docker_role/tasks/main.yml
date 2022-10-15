@@ -21,7 +21,8 @@
     state: latest
 
 - name: Install docker python package
-  ansible.builtin.pip:
+  pip:
     name: docker
+    version: 2.0.2
 
 
