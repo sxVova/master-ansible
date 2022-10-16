@@ -25,3 +25,11 @@ groups:
     annotations:
       summary: Host out of disk space (instance {{ $labels.instance }})
       description: "Disk is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+  - alert: Test Alert
+      expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[30s])) * 100) > 1
+      for: 30s
+      labels:
+        severity: critical
+      annotations:
+        summary: Test alert (instance {{ $labels.instance }})
+        description: "Test alert\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
