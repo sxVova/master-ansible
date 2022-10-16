@@ -3,7 +3,7 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-            - alertmanager:9093
+            - {{ prom_private_ip }}:9093
 global:
   scrape_interval:     10s
   evaluation_interval: 10s
